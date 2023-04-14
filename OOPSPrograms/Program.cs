@@ -9,14 +9,13 @@ namespace OOPSPrograms
         static string jsonDataFilePath = @"C:\Users\Basha\Documents\BridgeLabz\Object_Oriented_Programs\OOPSPrograms\InventoryManagement\InventoryData.json";
         static void Main(string[] args)
         {
+            InventoryManager inventoryManager = new InventoryManager();
             Console.WriteLine("Welcome to the OOPS Programs");
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select 1.InventoryDataManagement 2.InventoryManagement 3.Exit");
-                Console.Write("Enter your choice: ");
-                
-                {
+                    Console.WriteLine("Select 1.InventoryDataManagement 2.InventoryManagement 3.InventoryDisplay 4.AddInventoryData 5.Exit");
+                    Console.Write("Enter your choice: ");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
@@ -25,16 +24,19 @@ namespace OOPSPrograms
                             inventory.ReadJSONFile(jsonFilePath);
                             break;
                         case 2:
-                            InventoryManager inventoryManager = new InventoryManager();
                             inventoryManager.ReadJSONFile(jsonDataFilePath);
+                            inventoryManager.Displayy();
                             break;
                         case 3:
+                            inventoryManager.Displayy();
+                            break;
+                        case 4:
+                            inventoryManager.AddInventoryData();
+                            break;
+                        case 5:
                             flag = false;
                             break;
-
                     }
-
-                }
             }
         }
     }
