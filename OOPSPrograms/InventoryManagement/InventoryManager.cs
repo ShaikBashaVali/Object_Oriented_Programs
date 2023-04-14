@@ -15,6 +15,7 @@ namespace OOPSPrograms.InventoryManagement
         List<Inventory> WheatList;
         List<Inventory> PulsesList;
         InventoryData inventories;
+        Inventory inventory = new Inventory();
         public void ReadJSONFile(string file)
         {
             var json = File.ReadAllText(file);
@@ -62,8 +63,7 @@ namespace OOPSPrograms.InventoryManagement
         }
         public void AddInventoryData()
         {
-            Inventory inventory = new Inventory();
-            Console.WriteLine("Enter for which inventory u want to add");
+            Console.WriteLine("\nEnter for which inventory u want to add");
             Console.WriteLine("Select one from Rice ,Wheat and Pulses");
             string addinventory = Console.ReadLine();
             if (addinventory.Equals("Rice"))
@@ -87,10 +87,100 @@ namespace OOPSPrograms.InventoryManagement
                 inventory.PricePerKg = 10.0;
                 PulsesList.Add(inventory);
             }
-
             else
                 Console.WriteLine("Invalid input");
             Console.WriteLine("Inventory Data added successfully");
+        }
+        public void EditInventoryData()
+        {
+            Console.WriteLine("\nEnter the inventory which you want to edit\nInventories are Rice,Wheat and Pulses");
+            string editinventory = Console.ReadLine();
+            if (editinventory.Equals("Rice"))
+            {
+                Console.WriteLine("Enter Which Rice type you want to edit");
+                string rice = Console.ReadLine();
+                foreach (var data in RiceList)
+                {
+                    if (data.Name.Equals(rice))
+                    {
+                        Console.WriteLine("select what you want to edit\n1.Name 2.Weight 3.Priceperkg");
+                        int choice = Convert.ToInt32(Console.ReadLine());
+                        switch (choice)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter the new Name");
+                                data.Name = Console.ReadLine();
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter the new Weight");
+                                data.Weight = Convert.ToInt32(Console.ReadLine());
+                                break;
+                            case 3:
+                                Console.WriteLine("Enter the new Price per kg");
+                                data.PricePerKg = Convert.ToInt64(Console.ReadLine());
+                                break;
+                        }
+                    }
+                }
+            }
+            else if (editinventory.Equals("Wheat"))
+            {
+                Console.WriteLine("Enter Which Wheat type you want to edit");
+                string wheat = Console.ReadLine();
+                foreach (var data in WheatList)
+                {
+                    if (data.Name.Equals(wheat))
+                    {
+                        Console.WriteLine("select what you want to edit\n1.Name 2.Weight 3.Priceperkg");
+                        int choice = Convert.ToInt32(Console.ReadLine());
+                        switch (choice)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter the new Name");
+                                data.Name = Console.ReadLine();
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter the new Weight");
+                                data.Weight = Convert.ToInt32(Console.ReadLine());
+                                break;
+                            case 3:
+                                Console.WriteLine("Enter the new Price per kg");
+                                data.PricePerKg = Convert.ToInt64(Console.ReadLine());
+                                break;
+                        }
+                    }
+                }
+            }
+            else if (editinventory.Equals("Pulses"))
+            {
+                Console.WriteLine("Enter which Pulses type you want to edit");
+                string pulses = Console.ReadLine();
+                foreach (var data in PulsesList)
+                {
+                    if (data.Name.Equals(pulses))
+                    {
+                        Console.WriteLine("select what you want to edit\n1.Name 2.Weight 3.Priceperkg");
+                        int choice = Convert.ToInt32(Console.ReadLine());
+                        switch (choice)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter the new Name");
+                                data.Name = Console.ReadLine();
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter the new Weight");
+                                data.Weight = Convert.ToInt32(Console.ReadLine());
+                                break;
+                            case 3:
+                                Console.WriteLine("Enter the new Price per kg");
+                                data.PricePerKg = Convert.ToInt64(Console.ReadLine());
+                                break;
+                        }
+                    }
+                }
+            }
+            else
+                Console.WriteLine("Invalid Input");
         }
     }
 }
